@@ -1,0 +1,20 @@
+.textRoll__container {
+  position: relative;
+}
+
+.widthSet {
+  visibility: hidden;
+}
+
+.textRoll {
+  position: absolute;
+  top: 0;
+}
+
+.textRoll--visible {
+  visibility: visible;
+}
+
+.textRoll--hidden {
+  visibility: hidden;
+}

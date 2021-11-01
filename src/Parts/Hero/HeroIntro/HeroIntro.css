@@ -1,0 +1,26 @@
+.hero__intro {
+  height: 100%;
+  width: 100%;
+  position: absolute;
+  top: 0;
+}
+
+.hero__intro-background {
+  width: 100vw;
+  height: 100vh;
+  position: sticky;
+  top: 0;
+}
+
+.hero__intro-punchline {
+  height: 100vh;
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  position: relative;
+  z-index: 2;
+  font-size: 2.2em;
+  font-weight: bold;
+  text-align: center;
+}

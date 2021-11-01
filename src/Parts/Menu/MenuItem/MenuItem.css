@@ -1,0 +1,85 @@
+.menu-item {
+  position: relative;
+  width: fit-content;
+  cursor: pointer;
+}
+
+.menu-item:hover {
+  cursor: pointer;
+}
+
+.menu-item:hover::before {
+  transform: scaleX(1);
+  transform-origin: left;
+  pointer-events: none;
+}
+
+.menu-item::before {
+  content: "";
+  position: absolute;
+  bottom: -7px;
+  left: 0;
+  background: white;
+  transition: transform .6s ease;
+  transform-origin: right;
+  transform: scaleX(0);
+  width: 100%;
+  height: 5px;
+  z-index: -99;
+}
+
+.menu-item__arrow {
+  width: 40px;
+  height: 40px;
+  overflow: hidden;
+  display: inline-flex;
+  justify-content: center;
+  align-items: center;
+  pointer-events: none;
+}
+
+.menu-item__arrow > * {
+  width: 40px;
+  height: 40px;
+  transition: transform .4s ease;
+}
+
+.menu-item__arrow--right {
+  margin-left: 10px;
+}
+
+.menu-item__arrow--left {
+  margin-right: 10px;
+}
+
+.menu-item__arrow--right > * {
+  transform: rotate(-90deg) translateY(-130%);
+}
+
+.menu-item__arrow--right.--is-visible > * {
+  transform: rotate(-90deg) translateY(0);
+}
+
+.menu-item__arrow--left > * {
+  transform: rotate(90deg) translateY(-130%);
+}
+
+.menu-item__arrow--left.--is-visible > * {
+  transform: rotate(90deg) translateY(0);
+}
+
+.menu-item__shape {
+  position: absolute;
+  pointer-events: none;
+  top: -50%;
+  transform: translateY(-25%);
+  z-index: 10;
+}
+
+.menu-item__shape--right {
+  right: -40%;
+}
+
+.menu-item__shape--left {
+  left: -40%;
+}
