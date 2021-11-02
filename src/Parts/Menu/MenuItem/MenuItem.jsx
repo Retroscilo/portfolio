@@ -12,7 +12,7 @@ const MenuItem = ({ children, left, shapeOptions, background }) => {
   const { setBackgroundColor } = useTheme()
   const toggleHover = () => {
     setIsHover(!isHover)
-    // setBackgroundColor(!isHover ? background : "#90C098")
+    setBackgroundColor(!isHover ? background : "#90C098")
   }
   return (
     <div className="menu-item">
