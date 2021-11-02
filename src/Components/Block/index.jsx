@@ -2,7 +2,7 @@ import { useEffect, useRef } from "react"
 import styles from "./Block.module.css"
 import { createBackgroundObserver } from "../../utils/useObserver"
 
-const Block = ({ children, background }) => {
+const Block = ({ children, background, style }) => {
   const block = useRef()
   const blockObserver = createBackgroundObserver(background)
 
@@ -11,7 +11,7 @@ const Block = ({ children, background }) => {
     return () => blockObserver.disconnect()
   }, [background, blockObserver])
   return (
-    <div ref={block} className={styles.Block}>
+    <div ref={block} className={styles.Block} style={style}>
       {children}
     </div>
   )

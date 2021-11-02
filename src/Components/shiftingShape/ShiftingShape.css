@@ -4,6 +4,7 @@
   object-fit: cover;
   clip-path: polygon(50% 0%,50% 20%,50% 100%,50% 80%);
   transition: clip-path .7s cubic-bezier(.85,1,0,1);
+  will-change: clip-path;
 } 
 
 .shiftingShape.--is-visible {

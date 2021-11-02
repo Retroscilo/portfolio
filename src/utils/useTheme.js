@@ -11,9 +11,10 @@ export const ThemeBackground = ({ children }) => {
       {children}
       <style>{`
         body { 
-          background: ${backgroundColor};
+          background-color: ${backgroundColor};
           overflow-x: ${!overflow.x ? "hidden" : "visible"};
           overflow-y: ${!overflow.y ? "hidden" : "visible"};
+          will-change: background-color;
         }
         `}</style>
     </themeContext.Provider>

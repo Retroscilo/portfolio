@@ -4,6 +4,7 @@ import { useState } from "react"
 import { ShiftingShape } from "../../../Components/shiftingShape"
 import { ReactComponent as ArrowDown } from "../../../assets/images/arrow-down.svg"
 import { useTheme } from "../../../utils/useTheme"
+/* eslint-disable */
 
 const MenuItem = ({ children, left, shapeOptions, background }) => {
   const [isHover, setIsHover] = useState(false)
@@ -11,7 +12,7 @@ const MenuItem = ({ children, left, shapeOptions, background }) => {
   const { setBackgroundColor } = useTheme()
   const toggleHover = () => {
     setIsHover(!isHover)
-    setBackgroundColor(!isHover ? background : "#90C098")
+    // setBackgroundColor(!isHover ? background : "#90C098")
   }
   return (
     <div className="menu-item">

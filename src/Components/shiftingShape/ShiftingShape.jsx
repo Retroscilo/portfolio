@@ -42,7 +42,7 @@ const ShiftingShape = ({ isVisible, shapeOptions }) => {
       animateShape(state.start, dispatch)
     )
     return () => cancelAnimationFrame(shapeAnimation)
-  })
+  }, [isVisible, state.start])
   return (
     <img
       className={`shiftingShape ${isVisible && "--is-visible"}`}
