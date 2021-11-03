@@ -45,7 +45,7 @@ const Headline = ({ words }) => {
 const HeroLanding = forwardRef(({ opacity }, ref) => {
   const scrollDown = useRef(null)
   function scroll() {
-    window.scrollTo(0, 2 * window.innerHeight)
+    window.scrollTo(0, window.innerHeight)
   }
   const [words] = useState([
     "créatif",

@@ -1,48 +1,53 @@
 import "./ShiftingShape.css"
-import { useEffect, useReducer } from "react"
-
-const reducer = (state, { first, second, third, fourth }) => ({
-  ...state,
-  first,
-  second,
-  third,
-  fourth,
-})
-
-const initialState = {
-  first: { x: 0, y: 0 },
-  second: { x: 0, y: 0 },
-  third: { x: 0, y: 0 },
-  fourth: { x: 0, y: 0 },
-  start: Date.now(),
-}
-
-const animateShape = (start, dispatch) => {
-  const interval = Date.now() - start
-  const rotation = 3 * Math.sin(0.0008 * interval)
-  const moveX = 4 * Math.sin(0.0008 * interval)
-  const moveY = 3 * Math.cos(0.001 * interval)
-
-  dispatch({
-    first: { x: moveX + rotation, y: moveY - rotation },
-    second: { x: -moveX + rotation, y: moveY - rotation },
-    third: { x: -moveX - rotation, y: -moveY + rotation },
-    fourth: { x: moveX - rotation, y: -moveY + rotation },
-  })
-
-  requestAnimationFrame(() => animateShape(start, dispatch))
-}
+import { useEffect, useReducer, useCallback } from "react"
 
 const ShiftingShape = ({ isVisible, shapeOptions }) => {
+  const reducer = (state, { first, second, third, fourth }) => ({
+    ...state,
+    first,
+    second,
+    third,
+    fourth,
+  })
+
+  const initialState = {
+    first: { x: 0, y: 0 },
+    second: { x: 0, y: 0 },
+    third: { x: 0, y: 0 },
+    fourth: { x: 0, y: 0 },
+    start: Date.now(),
+  }
+
+  const animateShape = useCallback(
+    (start, dispatch) => {
+      if (!isVisible) return
+      const interval = Date.now() - start
+      const rotation = 3 * Math.sin(0.0008 * interval)
+      const moveX = 4 * Math.sin(0.0008 * interval)
+      const moveY = 3 * Math.cos(0.001 * interval)
+
+      dispatch({
+        first: { x: moveX + rotation, y: moveY - rotation },
+        second: { x: -moveX + rotation, y: moveY - rotation },
+        third: { x: -moveX - rotation, y: -moveY + rotation },
+        fourth: { x: moveX - rotation, y: -moveY + rotation },
+      })
+
+      requestAnimationFrame(() => animateShape(start, dispatch))
+    },
+    [isVisible]
+  )
+
   const { imgSrc, skew } = shapeOptions
   const { x: skewX, y: skewY } = skew
   const [state, dispatch] = useReducer(reducer, initialState)
   useEffect(() => {
     const shapeAnimation = requestAnimationFrame(() =>
-      animateShape(state.start, dispatch)
+      animateShape(state.start, dispatch, isVisible)
     )
+    if (!isVisible) cancelAnimationFrame(shapeAnimation)
     return () => cancelAnimationFrame(shapeAnimation)
-  }, [isVisible, state.start])
+  }, [animateShape, isVisible, state])
   return (
     <img
       className={`shiftingShape ${isVisible && "--is-visible"}`}
@@ -58,7 +63,7 @@ const ShiftingShape = ({ isVisible, shapeOptions }) => {
             ${20 - skewX + state.fourth.x}% ${80 + skewY + state.fourth.y}%
           )`,
             }
-          : {}
+          : { clipPath: "polygon(50% 0%,50% 20%,50% 100%,50% 80%)" }
       }
     />
   )

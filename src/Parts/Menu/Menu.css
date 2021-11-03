@@ -4,4 +4,67 @@
   justify-content: center;
   align-items: center;
   flex-direction: column;
+  color: black;
 }
+
+.menu__title {
+  font-family: "Playfair Display";
+  font-size: 2.8em;
+  perspective: 300px;
+  transform: translateX(-200px);
+}
+
+.--is-out {
+  animation: skewOut .8s forwards cubic-bezier(.11,1,.31,.98);
+}
+
+.--is-in {
+  animation: skewIn .8s forwards ease-in-out;
+}
+
+.--is-opaque {
+  animation: fadeIn 0.8s forwards linear;
+}
+
+.--is-faded {
+  animation: fadeOut .8s forwards cubic-bezier(.11,1,.31,.98);
+}
+
+@keyframes fadeOut {
+  from {
+    opacity: 1;
+  }
+  to {
+    opacity: 0;
+  }
+}
+
+@keyframes skewIn {
+  from {
+    opacity: 0;
+    transform: rotate3d(-9, -0.5, -0.5, -80deg);
+  }
+  to {
+    opacity: 1;
+  }
+}
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+  }
+  50% {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+
+@keyframes skewOut {
+  to {
+    transform: rotate3d(9, .5, .5, -80deg);
+    opacity: 0;
+  }
+}
+

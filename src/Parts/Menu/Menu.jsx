@@ -1,48 +1,55 @@
-/** @jsxImportSource theme-ui */
-import { MenuItem } from "./MenuItem"
-import Block from "../../Components/Block"
+import { useEffect, useReducer } from "react"
 import "./Menu.css"
-import vitrine from "../../assets/images/vitrine.jpg"
-import commerce from "../../assets/images/commerce.jpeg"
-import app from "../../assets/images/app.jpeg"
+import { MenuSelection } from "./MenuSelection"
+import Details from "../Details"
+import Block from "../../Components/Block"
+import { useTheme } from "../../utils/useTheme"
 
-const Menu = () => (
-  <Block
-    background="#90C098"
-    style={{
-      position: "sticky",
-      zIndex: 10,
-      bottom: 0,
-      height: "130vh",
-      paddingTop: "30vh",
-    }}
-  >
-    <div className="menu">
-      <span sx={{ mb: 4 }}>
-        <MenuItem
-          background="#C86A6A"
-          shapeOptions={{ imgSrc: vitrine, skew: { x: 5, y: 5 } }}
-        >
-          SITE VITRINE
-        </MenuItem>
-      </span>
-      <span sx={{ mb: 4 }}>
-        <MenuItem
-          background="#90C0C0"
-          shapeOptions={{ imgSrc: commerce, skew: { x: -10, y: 15 } }}
-          left
-        >
-          E-COMMERCE
-        </MenuItem>
-      </span>
-      <MenuItem
-        background="#6A73C8"
-        shapeOptions={{ imgSrc: app, skew: { x: -10, y: 15 } }}
-      >
-        APPLICATION
-      </MenuItem>
-    </div>
-  </Block>
+function reducer(state, action) {
+  switch (action.type) {
+    case "discover":
+      return { ...state, [action.key]: true }
+    case "hide":
+      return { ...state, [action.key]: false }
+    default:
+      throw new Error("menu reducer: action type is invalid")
+  }
+}
+
+// OPTIONAL
+const initialState = Object.keys(Details).reduce(
+  (state, key) => ({ ...state, [key]: false }),
+  { selection: true }
 )
+
+const Menu = () => {
+  const { setBackgroundColor } = useTheme()
+  const [state, dispatch] = useReducer(reducer, initialState)
+
+  useEffect(() => {
+    if (state.selection) setBackgroundColor("var(--selection-color)")
+  }, [setBackgroundColor, state])
+
+  return (
+    <Block
+      background="var(--selection-color)"
+      style={{
+        position: "sticky",
+        zIndex: 10,
+        bottom: 0,
+        height: "130vh",
+        paddingTop: "30vh",
+      }}
+    >
+      <MenuSelection display={state.selection} setDisplayState={dispatch} />
+      <Details.Commerce display={state.Commerce} setDisplayState={dispatch} />
+      <Details.Vitrine display={state.Vitrine} setDisplayState={dispatch} />
+      <Details.Application
+        display={state.Application}
+        setDisplayState={dispatch}
+      />
+    </Block>
+  )
+}
 
 export { Menu }

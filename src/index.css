@@ -56,7 +56,7 @@ body {
 	-webkit-font-smoothing: antialiased;
 	-moz-osx-font-smoothing: grayscale;
 	background: black;
-	color: white;
+	color: black;
 	transition: background-color .4s ease;
 }
 
@@ -67,4 +67,11 @@ code {
 
 html {
 	scroll-behavior: smooth;
+}
+
+:root {
+	--selection-color: #B6EDC7;
+	--vitrine-color: #EDB6B6;
+	--application-color: #B6BBED;
+	--commerce-color: #B6D6ED;
 }

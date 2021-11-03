@@ -43,7 +43,8 @@ const Hero = () => {
         height: "200vh",
         position: "relative",
         bg: "black",
-        zIndex: 20
+        zIndex: 20,
+        color: "white"
       }}
     >
       <HeroLanding ref={landing} opacity={landingOpacity} />

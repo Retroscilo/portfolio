@@ -2,7 +2,7 @@
 import "./MenuItem.css"
 import { useState } from "react"
 import { ShiftingShape } from "../../../Components/shiftingShape"
-import { ReactComponent as ArrowDown } from "../../../assets/images/arrow-down.svg"
+import { ReactComponent as ArrowBlack } from "../../../assets/images/arrow-black.svg"
 import { useTheme } from "../../../utils/useTheme"
 /* eslint-disable */
 
@@ -12,8 +12,9 @@ const MenuItem = ({ children, left, shapeOptions, background }) => {
   const { setBackgroundColor } = useTheme()
   const toggleHover = () => {
     setIsHover(!isHover)
-    setBackgroundColor(!isHover ? background : "#90C098")
+    setBackgroundColor(!isHover ? background : "var(--selection-color)")
   }
+  
   return (
     <div className="menu-item">
       <div
@@ -28,7 +29,7 @@ const MenuItem = ({ children, left, shapeOptions, background }) => {
             ${isHover && "--is-visible"}
           `}
         >
-          <ArrowDown />
+          <ArrowBlack />
         </div>
         {left && children}
       </div>

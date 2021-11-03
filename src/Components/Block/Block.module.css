@@ -3,4 +3,7 @@
   width: 100vw;
   position: relative;
   overflow: auto;
+  max-width: 1280px; 
+	margin: 0 auto !important; 
+	float: none !important; 
 }
