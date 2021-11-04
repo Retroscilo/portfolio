@@ -14,7 +14,7 @@ const MenuSelection = ({ display, setDisplayState }) => {
 
   function selectDetails(key) {
     setDisplayState({ type: "hide", key: "selection" })
-    setTimeout(() => setDisplayState({ type: "discover", key }, 1800))
+    setTimeout(() => setDisplayState({ type: "discover", key }, 1000))
   }
 
   useEffect(() => {
@@ -33,7 +33,7 @@ const MenuSelection = ({ display, setDisplayState }) => {
     <div ref={menuSelectionRef} className="menu">
       <h1
         className={`menu__title ${display ? "--is-opaque" : "--is-faded"}`}
-        sx={{ mb: 4 }}
+        sx={{ mb: [5, 4] }}
       >
         Voici le menu du jour :
       </h1>
@@ -83,7 +83,7 @@ const MenuSelection = ({ display, setDisplayState }) => {
       >
         <MenuItem
           background="var(--application-color)"
-          shapeOptions={{ imgSrc: app, skew: { x: -10, y: 15 } }}
+          shapeOptions={{ imgSrc: app, skew: { x: 10, y: -15 } }}
         >
           APPLICATION
         </MenuItem>

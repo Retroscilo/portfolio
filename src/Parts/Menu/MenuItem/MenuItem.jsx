@@ -1,6 +1,6 @@
 /** @jsxImportSource theme-ui */
 import "./MenuItem.css"
-import { useState } from "react"
+import { useEffect, useState } from "react"
 import { ShiftingShape } from "../../../Components/shiftingShape"
 import { ReactComponent as ArrowBlack } from "../../../assets/images/arrow-black.svg"
 import { useTheme } from "../../../utils/useTheme"
@@ -14,6 +14,9 @@ const MenuItem = ({ children, left, shapeOptions, background }) => {
     setIsHover(!isHover)
     setBackgroundColor(!isHover ? background : "var(--selection-color)")
   }
+  useEffect(() => {
+    if (window.innerWidth < 600) setIsHover(true)
+  })
   
   return (
     <div className="menu-item">
