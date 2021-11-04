@@ -1,0 +1,18 @@
+.meet {
+  display: grid;
+  grid-template-columns: 20% 80%;
+  grid-template-rows: 30% 70%;
+  height: 100%;
+}
+
+.meet__shape {
+  width: 16em;
+  height: 16em;
+}
+
+.meet__text {
+  grid-row-start: 2;
+  grid-column-start: 2;
+  font-size: 2em;
+  line-height: 120%;
+}

@@ -16,7 +16,7 @@ const MenuItem = ({ children, left, shapeOptions, background }) => {
   }
   useEffect(() => {
     if (window.innerWidth < 600) setIsHover(true)
-  })
+  }, [window])
   
   return (
     <div className="menu-item">

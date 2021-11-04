@@ -1,4 +1,4 @@
-import { Hero, Menu, Third } from "./Parts"
+import { Hero, Menu, Meet } from "./Parts"
 
 function App() {
   console.log(
@@ -8,7 +8,7 @@ function App() {
     <div className="App">
       <Hero />
       <Menu />
-      <Third />
+      <Meet />
     </div>
   )
 }

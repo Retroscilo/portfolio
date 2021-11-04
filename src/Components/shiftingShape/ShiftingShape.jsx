@@ -41,6 +41,7 @@ const ShiftingShape = ({ isVisible, shapeOptions }) => {
   const { imgSrc, skew } = shapeOptions
   const { x: skewX, y: skewY } = skew
   const [state, dispatch] = useReducer(reducer, initialState)
+
   useEffect(() => {
     const shapeAnimation = requestAnimationFrame(() =>
       animateShape(state.start, dispatch, isVisible)
@@ -48,6 +49,7 @@ const ShiftingShape = ({ isVisible, shapeOptions }) => {
     if (!isVisible) cancelAnimationFrame(shapeAnimation)
     return () => cancelAnimationFrame(shapeAnimation)
   }, [animateShape, isVisible, state])
+
   return (
     <img
       className={`shiftingShape ${isVisible && "--is-visible"}`}

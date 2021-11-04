@@ -1,4 +1,3 @@
-/** @jsxImportSource theme-ui */
 import { useEffect, useRef, useState, useMemo } from "react"
 import { HeroLanding } from "./HeroLanding"
 import { HeroIntro } from "./HeroIntro"
@@ -38,11 +37,11 @@ const Hero = () => {
   }, [windowHeight, introOpacity, landingOpacity])
   return (
     <div
-      sx={{
+      style={{
         width: "100vw",
         height: "200vh",
         position: "relative",
-        bg: "black",
+        background: "black",
         zIndex: 20,
         color: "white"
       }}

@@ -20,13 +20,13 @@ const Headline = ({ words }) => {
     }, words.length * 600 + 2150) // text animation + caret blinking + cover duration - 350ms
   })
   return (
-    <div sx={{ display: "flex", alignItems: "center", height: "100%" }}>
+    <div style={{ display: "flex", alignItems: "center", height: "100%" }}>
       <div className="hero__landing" sx={{ padding: 5 }}>
-        <span sx={{ fontWeight: "bold" }}>RENCONTREZ&nbsp;</span>
-        <div sx={{ position: "relative" }}>
+        <span style={{ fontWeight: "bold" }}>RENCONTREZ&nbsp;</span>
+        <div style={{ position: "relative" }}>
           <div
             ref={newHTML}
-            sx={{
+            style={{
               position: "relative",
               display: "flex",
               whiteSpace: "nowrap",
@@ -64,7 +64,7 @@ const HeroLanding = forwardRef(({ opacity }, ref) => {
   return (
     <div
       ref={ref}
-      sx={{ width: "100vw", height: "100vh", position: "relative", opacity }}
+      style={{ width: "100vw", height: "100vh", position: "relative", opacity }}
     >
       <Headline words={words} />
       <div

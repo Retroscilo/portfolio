@@ -4,7 +4,7 @@ import { forwardRef } from "react"
 import introImg from "./intro.jpeg"
 
 const HeroIntro = forwardRef(({ opacity }, ref) => (
-  <div sx={{ opacity }} className="hero__intro">
+  <div style={{ opacity }} className="hero__intro">
     <img
       className="hero__intro-background"
       src={introImg}
