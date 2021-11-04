@@ -1,0 +1,149 @@
+.details {
+  overflow: visible;
+  display: grid;
+  grid-template-columns: 60% 40%;
+  grid-template-rows: 100%;
+  grid-column-gap: 60px;
+  height: 100vh;
+  width: 100%;
+  padding: 5rem 40px;
+  position: absolute;
+  top: calc(15vh + 50%);
+  transform: translateY(-50%);
+  z-index: 200;
+  overflow-x: hidden;
+  line-height: 110%;
+  max-height: 900px;
+}
+
+.details__return {
+  font-size: 2em;
+  font-weight: bold;
+  position: absolute;
+  top: 5rem;
+  right: 60px;
+  cursor: pointer;
+}
+
+.details--hidden {
+  display: none;
+}
+
+.details--left {
+  left: -100vw
+}
+
+.details__textContainer {
+  display: flex;
+  flex-direction: column;
+  padding: 0 50px;
+  justify-content: space-between;
+}
+
+.details__title {
+  font-size: 2.3em;
+  font-family: "Playfair Display";
+  margin-bottom: 10px;
+  line-height: 115%;
+}
+
+.details__paragraph {
+  line-height: 120%;
+  font-size: 1.3em;
+}
+
+.details__name {
+  position: relative;
+  font-size: 2.3em;
+  font-weight: bold;
+  display: flex;
+  align-items: center;
+}
+
+.details__name-shape {
+  position: absolute;
+  width: 8em;
+  height: 8em;
+  z-index: -1;
+  right: 2%;
+}
+
+@media(max-width: 1200px) {
+  .details__title {
+    font-size: 1.8em;
+  }
+
+  .details {
+    font-size: .9em;
+  }
+}
+
+@media (max-width: 1000px) {
+  .details {
+    grid-template-columns: 100%;
+    grid-template-rows: 20% 80%;
+  }
+
+  .details__name {
+    grid-row-start: 1;
+    justify-content: center;
+  }
+}
+
+@media(max-width: 768px) {
+  .details__title {
+    font-size: 1.5em;
+  }
+
+  .details {
+    grid-template-rows: 25% 75%;
+    padding: 20px 0;
+    font-size: .8em;
+  }
+
+  .details__name-shape {
+    width: 6em;
+    height: 6em;
+  }
+}
+
+
+.details__return:hover::before {
+  transform: scaleX(1);
+  transform-origin: left;
+  pointer-events: none;
+}
+
+.details__return::before {
+  content: "";
+  position: absolute;
+  bottom: -15px;
+  left: 0;
+  background: black;
+  transition: transform .6s ease;
+  transform-origin: right;
+  transform: scaleX(0);
+  width: 100%;
+  height: 5px;
+  z-index: -99;
+}
+
+.details__arrow {
+  width: 30px;
+  height: 30px;
+  overflow: hidden !important;
+  display: inline-flex;
+  justify-content: center;
+  align-items: center;
+  pointer-events: none;
+  margin-left: 10px;
+}
+
+.details__arrow > * {
+  transform: rotate(-90deg) translateY(-130%);
+  transition: transform .4s ease;
+}
+
+.details__arrow.--is-visible > * {
+  transform: rotate(-90deg) translateY(0%);
+}
