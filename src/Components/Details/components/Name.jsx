@@ -7,7 +7,7 @@ const Name = ({ children, shapeOptions }) => {
     <div className={`details__name ${display ? "--is-in" : "--is-out"}`}>
       {children}
       <span className="details__name-shape">
-        <ShiftingShape isVisible shapeOptions={shapeOptions} />
+        <ShiftingShape isVisible={display} shapeOptions={shapeOptions} />
       </span>
     </div>
   )

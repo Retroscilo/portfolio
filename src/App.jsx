@@ -1,6 +1,6 @@
 import { useEffect } from "react"
 import { Provider } from "jotai"
-import { Hero, Menu, Meet } from "./Parts"
+import { Hero, Menu } from "./Parts"
 
 function App() {
   useEffect(() =>
@@ -13,7 +13,7 @@ function App() {
       <Provider>
         <Hero />
         <Menu />
-        <Meet />
+        {/* <Meet /> */}
       </Provider>
     </div>
   )

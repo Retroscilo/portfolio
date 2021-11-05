@@ -1,6 +1,6 @@
-/* eslint-disable react-hooks/exhaustive-deps */
+/* eslint-disable */
 import "./ShiftingShape.css"
-import { useEffect, useReducer, useCallback } from "react"
+import { useReducer, useCallback, useEffect } from "react"
 
 const ShiftingShape = ({ isVisible, shapeOptions }) => {
   const reducer = (state, { first, second, third, fourth }) => ({
@@ -11,6 +11,8 @@ const ShiftingShape = ({ isVisible, shapeOptions }) => {
     fourth,
   })
 
+  useEffect(() => console.log(isVisible))
+
   const initialState = {
     first: { x: 0, y: 0 },
     second: { x: 0, y: 0 },
@@ -18,36 +20,35 @@ const ShiftingShape = ({ isVisible, shapeOptions }) => {
     fourth: { x: 0, y: 0 },
     start: Date.now(),
   }
-
-  const animateShape = useCallback(
-    (start, dispatch) => {
-      const interval = Date.now() - start
-      const rotation = 3 * Math.sin(0.0008 * interval)
-      const moveX = 4 * Math.sin(0.0008 * interval)
-      const moveY = 3 * Math.cos(0.001 * interval)
-
-      dispatch({
-        first: { x: moveX + rotation, y: moveY - rotation },
-        second: { x: -moveX + rotation, y: moveY - rotation },
-        third: { x: -moveX - rotation, y: -moveY + rotation },
-        fourth: { x: moveX - rotation, y: -moveY + rotation },
-      })
-
-      requestAnimationFrame(() => animateShape(start, dispatch))
-    },
-    [isVisible]
-  )
-
   const { imgSrc, skew } = shapeOptions
   const { x: skewX, y: skewY } = skew
   const [state, dispatch] = useReducer(reducer, initialState)
 
+  const animateShape = useCallback((start, dispatch) => {
+    console.log(shapeOptions)
+    const interval = Date.now() - start
+    const rotation = 3 * Math.sin(0.0008 * interval)
+    const moveX = 4 * Math.sin(0.0008 * interval)
+    const moveY = 3 * Math.cos(0.001 * interval)
+
+    dispatch({
+      first: { x: moveX + rotation, y: moveY - rotation },
+      second: { x: -moveX + rotation, y: moveY - rotation },
+      third: { x: -moveX - rotation, y: -moveY + rotation },
+      fourth: { x: moveX - rotation, y: -moveY + rotation },
+    })
+
+    requestAnimationFrame(() => animateShape(start, dispatch))
+  })
+
   useEffect(() => {
-    const shapeAnimation = requestAnimationFrame(() =>
-      animateShape(state.start, dispatch, isVisible)
-    )
+    if (!isVisible) return
+    const shapeAnimation = requestAnimationFrame(() => {
+      animateShape(state.start, dispatch)
+    })
+    cancelAnimationFrame(shapeAnimation)
     return () => cancelAnimationFrame(shapeAnimation)
-  }, [])
+  }, [isVisible])
 
   return (
     <img
