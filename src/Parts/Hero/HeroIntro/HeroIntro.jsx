@@ -1,7 +1,7 @@
 /** @jsxImportSource theme-ui */
 import "./HeroIntro.css"
 import { forwardRef } from "react"
-import introImg from "./intro.jpeg"
+import introImg from "../../../assets/images/intro.jpg"
 
 const HeroIntro = forwardRef(({ opacity }, ref) => (
   <div style={{ opacity }} className="hero__intro">

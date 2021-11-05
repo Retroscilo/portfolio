@@ -1,10 +1,11 @@
 /** @jsxImportSource theme-ui */
+/* eslint-disable */
 import { useRef, useEffect, forwardRef } from "react"
 import { MenuItem } from "../MenuItem"
 import "../Menu.css"
 import vitrine from "../../../assets/images/vitrine.jpg"
-import commerce from "../../../assets/images/commerce.jpeg"
-import app from "../../../assets/images/app.jpeg"
+import commerce from "../../../assets/images/commerce.jpg"
+import app from "../../../assets/images/app.jpg"
 
 const MenuSelection = ({ display, setDisplayState }) => {
   const menuSelectionRef = useRef(null)

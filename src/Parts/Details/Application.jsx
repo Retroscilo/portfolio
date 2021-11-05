@@ -1,5 +1,5 @@
 import { Details } from "../../Components/Details"
-import application from "../../assets/images/app.jpeg"
+import application from "../../assets/images/app.jpg"
 
 const shapeOptions = {
   imgSrc: application,

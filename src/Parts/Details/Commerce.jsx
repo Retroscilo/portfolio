@@ -1,5 +1,5 @@
 import { Details } from "../../Components/Details"
-import commerce from "../../assets/images/commerce.jpeg"
+import commerce from "../../assets/images/commerce.jpg"
 
 const shapeOptions = {
   imgSrc: commerce,
