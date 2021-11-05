@@ -1,6 +1,6 @@
 /* eslint-disable */
 import "./ShiftingShape.css"
-import { useReducer, useCallback, useEffect } from "react"
+import { useReducer, useCallback, useEffect, useState } from "react"
 
 const ShiftingShape = ({ isVisible, shapeOptions }) => {
   const reducer = (state, { first, second, third, fourth }) => ({
@@ -10,8 +10,6 @@ const ShiftingShape = ({ isVisible, shapeOptions }) => {
     third,
     fourth,
   })
-
-  useEffect(() => console.log(isVisible))
 
   const initialState = {
     first: { x: 0, y: 0 },
@@ -24,8 +22,7 @@ const ShiftingShape = ({ isVisible, shapeOptions }) => {
   const { x: skewX, y: skewY } = skew
   const [state, dispatch] = useReducer(reducer, initialState)
 
-  const animateShape = useCallback((start, dispatch) => {
-    console.log(shapeOptions)
+  const animateShape = useCallback((start, dispatch, isVisible) => {
     const interval = Date.now() - start
     const rotation = 3 * Math.sin(0.0008 * interval)
     const moveX = 4 * Math.sin(0.0008 * interval)
@@ -38,16 +35,23 @@ const ShiftingShape = ({ isVisible, shapeOptions }) => {
       fourth: { x: moveX - rotation, y: -moveY + rotation },
     })
 
-    requestAnimationFrame(() => animateShape(start, dispatch))
+    requestAnimationFrame(() => animateShape(start, dispatch, isVisible))
   })
 
   useEffect(() => {
     if (!isVisible) return
     const shapeAnimation = requestAnimationFrame(() => {
-      animateShape(state.start, dispatch)
+      animateShape(state.start, dispatch, isVisible)
     })
-    cancelAnimationFrame(shapeAnimation)
     return () => cancelAnimationFrame(shapeAnimation)
+  }, [isVisible])
+
+  useEffect(() => {
+    if(!isVisible){
+      var id = window.requestAnimationFrame(function(){});
+      while(id--){
+        window.cancelAnimationFrame(id);
+      }}
   }, [isVisible])
 
   return (
