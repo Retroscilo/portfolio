@@ -3,16 +3,14 @@ import "./MenuItem.css"
 import { useEffect, useState } from "react"
 import { ShiftingShape } from "../../../Components/shiftingShape"
 import { ReactComponent as ArrowBlack } from "../../../assets/images/arrow-black.svg"
-import { useTheme } from "../../../utils/useTheme"
 /* eslint-disable */
 
 const MenuItem = ({ children, left, shapeOptions, background }) => {
   const [isHover, setIsHover] = useState(false)
   const [side] = useState(left ? "--left" : "--right")
-  const { setBackgroundColor } = useTheme()
   const toggleHover = () => {
     setIsHover(!isHover)
-    setBackgroundColor(!isHover ? background : "var(--selection-color)")
+    document.body.style.backgroundColor = !isHover ? background : "var(--selection-color)"
   }
   useEffect(() => {
     if (window.innerWidth < 600) setIsHover(true)

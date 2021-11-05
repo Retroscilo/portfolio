@@ -4,15 +4,12 @@ import "./index.css"
 import { ThemeProvider } from "theme-ui"
 import App from "./App"
 import reportWebVitals from "./reportWebVitals"
-import { ThemeBackground } from "./utils/useTheme"
 import { theme } from "./utils/theme"
 
 ReactDOM.render(
   <React.StrictMode>
     <ThemeProvider theme={theme}>
-      <ThemeBackground>
-        <App />
-      </ThemeBackground>
+      <App />
     </ThemeProvider>
   </React.StrictMode>,
   document.getElementById("root")

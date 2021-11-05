@@ -1,9 +1,8 @@
-import { useEffect, useReducer } from "react"
+import { useReducer } from "react"
 import "./Menu.css"
 import { MenuSelection } from "./MenuSelection"
 import Details from "../Details"
 import Block from "../../Components/Block"
-import { useTheme } from "../../utils/useTheme"
 
 function reducer(state, action) {
   switch (action.type) {
@@ -23,12 +22,7 @@ const initialState = Object.keys(Details).reduce(
 )
 
 const Menu = () => {
-  const { setBackgroundColor } = useTheme()
   const [state, dispatch] = useReducer(reducer, initialState)
-
-  useEffect(() => {
-    if (state.selection) setBackgroundColor("var(--selection-color)")
-  }, [setBackgroundColor, state])
 
   return (
     <Block

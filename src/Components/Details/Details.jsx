@@ -3,12 +3,10 @@ import "./Details.css"
 import { DetailsContextProvider, useDetailsContext } from "./UseDetailsContext"
 import { Name, Content } from "./components"
 import { ReactComponent as ArrowBlack } from "../../assets/images/arrow-black.svg"
-import { useTheme } from "../../utils/useTheme"
 
 const Details = ({ children, display, setDisplayState, background }) => {
   const detailsContainer = useRef(null)
   const isFirstMount = useRef(true)
-  const { setBackgroundColor } = useTheme()
   const backToSelection = () => {
     setDisplayState({ type: "hide", key: "Commerce" })
     setDisplayState({ type: "hide", key: "Vitrine" })
@@ -19,10 +17,8 @@ const Details = ({ children, display, setDisplayState, background }) => {
   }
 
   useEffect(() => {
-    if (display) setBackgroundColor(background)
-  })
-
-  useEffect(() => {
+    console.log("triggered")
+    document.body.style.backgroundColor = background
     if (!isFirstMount) detailsContainer.current.classList.add("details--hidden")
     else isFirstMount.current = false
     if (display) detailsContainer.current.classList.remove("details--hidden")
@@ -31,7 +27,7 @@ const Details = ({ children, display, setDisplayState, background }) => {
         () => detailsContainer.current.classList.add("details--hidden"),
         800
       )
-  }, [background, display, setBackgroundColor])
+  }, [background, display])
 
   return (
     <DetailsContextProvider value={{ display }}>

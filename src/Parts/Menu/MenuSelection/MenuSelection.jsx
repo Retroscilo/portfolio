@@ -1,5 +1,5 @@
 /** @jsxImportSource theme-ui */
-import { useRef, useEffect } from "react"
+import { useRef, useEffect, forwardRef } from "react"
 import { MenuItem } from "../MenuItem"
 import "../Menu.css"
 import vitrine from "../../../assets/images/vitrine.jpg"
@@ -14,12 +14,14 @@ const MenuSelection = ({ display, setDisplayState }) => {
 
   function selectDetails(key) {
     setDisplayState({ type: "hide", key: "selection" })
-    setTimeout(() => setDisplayState({ type: "discover", key }, 1000))
+    setDisplayState({ type: "discover", key })
   }
 
   useEffect(() => {
-    if (display)
-      [Vitrine, Commerce, Application].forEach((ref, i) => {
+    if (display) {
+      document.body.style.backgroundColor = "var(--selection-color)"
+      const array = [Vitrine, Commerce, Application]
+      array.forEach((ref, i) => {
         const node = ref.current
         node.style.visibility = "hidden"
         setTimeout(() => {
@@ -27,7 +29,23 @@ const MenuSelection = ({ display, setDisplayState }) => {
           node.classList.add("--is-in")
         }, i * 100 + 200)
       })
+    }
   }, [display])
+
+  const MenuItemContainer = forwardRef(({ children, detail }, ref) => (
+    <span
+      ref={ref}
+      style={{ marginBottom: "30px" }}
+      className={`MenuItem ${!display && "--is-out"}`}
+      onClick={() => selectDetails(detail)}
+      onKeyPress={() => selectDetails(detail)}
+      tabIndex="0"
+      role="button"
+      aria-label="ouvre les détails d'une prestation (application)"
+    >
+      {children}
+    </span>
+  ))
 
   return (
     <div ref={menuSelectionRef} className="menu">
@@ -37,33 +55,15 @@ const MenuSelection = ({ display, setDisplayState }) => {
       >
         Voici le menu du jour :
       </h1>
-      <span
-        className={`MenuItem ${!display && "--is-out"}`}
-        sx={{ mb: 4 }}
-        ref={Vitrine}
-        onClick={() => selectDetails("Vitrine")}
-        onKeyPress={() => selectDetails("Vitrine")}
-        tabIndex="0"
-        role="button"
-        aria-label="ouvre les détails d'une prestation"
-      >
+      <MenuItemContainer ref={Vitrine} detail="Vitrine">
         <MenuItem
           background="var(--vitrine-color)"
           shapeOptions={{ imgSrc: vitrine, skew: { x: 5, y: 5 } }}
         >
           SITE VITRINE
         </MenuItem>
-      </span>
-      <span
-        ref={Commerce}
-        className={`MenuItem ${!display && "--is-out"}`}
-        onClick={() => selectDetails("Commerce")}
-        onKeyPress={() => selectDetails("Commerce")}
-        sx={{ mb: 4 }}
-        tabIndex="0"
-        role="button"
-        aria-label="ouvre les détails d'une prestation"
-      >
+      </MenuItemContainer>
+      <MenuItemContainer ref={Commerce} detail="Commerce">
         <MenuItem
           background="var(--commerce-color)"
           shapeOptions={{ imgSrc: commerce, skew: { x: -10, y: 15 } }}
@@ -71,23 +71,15 @@ const MenuSelection = ({ display, setDisplayState }) => {
         >
           E-COMMERCE
         </MenuItem>
-      </span>
-      <span
-        ref={Application}
-        className={`MenuItem ${!display && "--is-out"}`}
-        onClick={() => selectDetails("Application")}
-        onKeyPress={() => selectDetails("Application")}
-        tabIndex="0"
-        role="button"
-        aria-label="ouvre les détails d'une prestation"
-      >
+      </MenuItemContainer>
+      <MenuItemContainer ref={Application} detail="Application">
         <MenuItem
           background="var(--application-color)"
           shapeOptions={{ imgSrc: app, skew: { x: 10, y: -15 } }}
         >
           APPLICATION
         </MenuItem>
-      </span>
+      </MenuItemContainer>
     </div>
   )
 }

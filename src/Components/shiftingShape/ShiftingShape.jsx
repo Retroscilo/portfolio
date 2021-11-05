@@ -1,3 +1,4 @@
+/* eslint-disable react-hooks/exhaustive-deps */
 import "./ShiftingShape.css"
 import { useEffect, useReducer, useCallback } from "react"
 
@@ -20,7 +21,6 @@ const ShiftingShape = ({ isVisible, shapeOptions }) => {
 
   const animateShape = useCallback(
     (start, dispatch) => {
-      if (!isVisible) return
       const interval = Date.now() - start
       const rotation = 3 * Math.sin(0.0008 * interval)
       const moveX = 4 * Math.sin(0.0008 * interval)
@@ -46,9 +46,8 @@ const ShiftingShape = ({ isVisible, shapeOptions }) => {
     const shapeAnimation = requestAnimationFrame(() =>
       animateShape(state.start, dispatch, isVisible)
     )
-    if (!isVisible) cancelAnimationFrame(shapeAnimation)
     return () => cancelAnimationFrame(shapeAnimation)
-  }, [animateShape, isVisible, state])
+  }, [])
 
   return (
     <img
