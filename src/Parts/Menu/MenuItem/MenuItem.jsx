@@ -22,7 +22,7 @@ const MenuItem = ({ children, left, shapeOptions, background }) => {
         onMouseEnter={toggleHover}
         onMouseOut={toggleHover}
         onBlur={toggleHover}
-        sx={{ fontSize: [6], fontWeight: "bold" }}
+        sx={{ fontWeight: "bold" }}
       >
         {!left && children}
         <div

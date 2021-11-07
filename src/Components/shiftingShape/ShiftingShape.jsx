@@ -1,58 +1,69 @@
 /* eslint-disable */
 import "./ShiftingShape.css"
 import { useReducer, useCallback, useEffect, useState } from "react"
+import { persistentAnimationsId } from "../../Atoms"
+import { useAtom } from "jotai"
 
-const ShiftingShape = ({ isVisible, shapeOptions }) => {
-  const reducer = (state, { first, second, third, fourth }) => ({
-    ...state,
-    first,
-    second,
-    third,
-    fourth,
+const reducer = (state, { first, second, third, fourth }) => ({
+  ...state,
+  first,
+  second,
+  third,
+  fourth,
+})
+
+const initialState = {
+  first: { x: 0, y: 0 },
+  second: { x: 0, y: 0 },
+  third: { x: 0, y: 0 },
+  fourth: { x: 0, y: 0 },
+  start: Date.now(),
+}
+
+const animateShape = (start, dispatch, isVisible, id, src) => {
+  const interval = Date.now() - start
+  const rotation = 3 * Math.sin(0.0008 * interval)
+  const moveX = 4 * Math.sin(0.0008 * interval)
+  const moveY = 3 * Math.cos(0.001 * interval)
+  // console.log(id, src)
+  dispatch({
+    first: { x: moveX + rotation, y: moveY - rotation },
+    second: { x: -moveX + rotation, y: moveY - rotation },
+    third: { x: -moveX - rotation, y: -moveY + rotation },
+    fourth: { x: moveX - rotation, y: -moveY + rotation },
   })
 
-  const initialState = {
-    first: { x: 0, y: 0 },
-    second: { x: 0, y: 0 },
-    third: { x: 0, y: 0 },
-    fourth: { x: 0, y: 0 },
-    start: Date.now(),
-  }
+  requestAnimationFrame(() => animateShape(start, dispatch, isVisible, id, src))
+}
+
+const ShiftingShape = ({ isVisible, shapeOptions }) => {
   const { imgSrc, skew } = shapeOptions
   const { x: skewX, y: skewY } = skew
   const [state, dispatch] = useReducer(reducer, initialState)
-
-  const animateShape = useCallback((start, dispatch, isVisible) => {
-    const interval = Date.now() - start
-    const rotation = 3 * Math.sin(0.0008 * interval)
-    const moveX = 4 * Math.sin(0.0008 * interval)
-    const moveY = 3 * Math.cos(0.001 * interval)
-
-    dispatch({
-      first: { x: moveX + rotation, y: moveY - rotation },
-      second: { x: -moveX + rotation, y: moveY - rotation },
-      third: { x: -moveX - rotation, y: -moveY + rotation },
-      fourth: { x: moveX - rotation, y: -moveY + rotation },
-    })
-
-    requestAnimationFrame(() => animateShape(start, dispatch, isVisible))
-  })
+  const [arr, setArr] = useAtom(persistentAnimationsId)
 
   useEffect(() => {
     if (!isVisible) return
     const shapeAnimation = requestAnimationFrame(() => {
-      animateShape(state.start, dispatch, isVisible)
+      console.log('call : ', shapeAnimation, imgSrc)
+      animateShape(state.start, dispatch, isVisible, shapeAnimation, imgSrc)
     })
+    if (isVisible === "always") {
+      const newArr = [...arr, shapeAnimation]
+      setArr(newArr);
+    }
     return () => cancelAnimationFrame(shapeAnimation)
   }, [isVisible])
-
+  
   useEffect(() => {
+    var id = window.requestAnimationFrame(function(){});
     if(!isVisible){
-      var id = window.requestAnimationFrame(function(){});
-      while(id--){
-        window.cancelAnimationFrame(id);
-      }}
-  }, [isVisible])
+      const ids = [...Array(id).keys()]
+      ids.forEach(a => {
+        if (a === id - arr[0]) return
+        window.cancelAnimationFrame(a);
+      })
+  }}, [isVisible])
 
   return (
     <img

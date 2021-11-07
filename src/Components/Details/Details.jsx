@@ -11,13 +11,10 @@ const Details = ({ children, display, setDisplayState, background }) => {
     setDisplayState({ type: "hide", key: "Commerce" })
     setDisplayState({ type: "hide", key: "Vitrine" })
     setDisplayState({ type: "hide", key: "Application" })
-    setTimeout(() => {
-      setDisplayState({ type: "discover", key: "selection" })
-    })
+    setDisplayState({ type: "discover", key: "selection" })
   }
 
   useEffect(() => {
-    console.log("triggered")
     document.body.style.backgroundColor = background
     if (!isFirstMount) detailsContainer.current.classList.add("details--hidden")
     else isFirstMount.current = false
@@ -30,7 +27,7 @@ const Details = ({ children, display, setDisplayState, background }) => {
   }, [background, display])
 
   return (
-    <DetailsContextProvider value={{ display }}>
+    <DetailsContextProvider value={{ display, setDisplayState }}>
       <div ref={detailsContainer} className="details">
         {children}
         <Return visible={display} action={backToSelection} />
@@ -40,19 +37,25 @@ const Details = ({ children, display, setDisplayState, background }) => {
 }
 
 const ContentContainer = ({ children, left }) => {
-  const { display } = useDetailsContext()
+  const { display, setDisplayState } = useDetailsContext()
+  const displayContact = () => {
+    setDisplayState({ type: "hide", key: "Commerce" })
+    setDisplayState({ type: "hide", key: "Vitrine" })
+    setDisplayState({ type: "hide", key: "Application" })
+    setDisplayState({ type: "discover", key: "contact" })
+  }
   return (
     <div
       className="details__textContainer"
       style={{ gridColumnStart: left ? 1 : 2 }}
     >
       {children}
-      <Contact visible={display} />
+      <Contact visible={display} action={displayContact} />
     </div>
   )
 }
 
-const Return = ({ visible, action }) => {
+export const Return = ({ visible, action }) => {
   const [isHovered, setIsHovered] = useState(false)
   return (
     <div

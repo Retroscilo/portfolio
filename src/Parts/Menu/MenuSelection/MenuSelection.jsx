@@ -20,6 +20,7 @@ const MenuSelection = ({ display, setDisplayState }) => {
 
   useEffect(() => {
     if (display) {
+      menuSelectionRef.current.style.display = "flex"
       document.body.style.backgroundColor = "var(--selection-color)"
       const array = [Vitrine, Commerce, Application]
       array.forEach((ref, i) => {
@@ -30,6 +31,10 @@ const MenuSelection = ({ display, setDisplayState }) => {
           node.classList.add("--is-in")
         }, i * 100 + 200)
       })
+    } else {
+      setTimeout(() => {
+        menuSelectionRef.current.style.display = "none"
+      }, 800)
     }
   }, [display])
 

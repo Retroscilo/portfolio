@@ -67,8 +67,7 @@
 }
 
 .details__contact {
-  margin: 0 auto;
-  margin-bottom: 20px;
+  margin: 20px auto;
   position: relative;
   width: fit-content;
   transform: translateX(-40px)
@@ -94,7 +93,7 @@
   bottom: -15px;
   left: 0;
   background: black;
-  transition: transform .6s ease;
+  transition: transform .6s cubic-bezier(.71,0,.23,1.01);
   transform-origin: right;
   transform: scaleX(0);
   width: 100%;

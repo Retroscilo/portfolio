@@ -20,7 +20,7 @@ const Meet = () => {
     <Block background="#EDD3B6">
       <div className="meet" ref={thirdBlock}>
         <div className="meet__shape">
-          <ShiftingShape isVisible shapeOptions={shapeOptions} />
+          <ShiftingShape isVisible="always" shapeOptions={shapeOptions} />
         </div>
         <p className="meet__text">
           Passionné d’informatique et de jeux vidéo depuis que l’on m’a interdit
