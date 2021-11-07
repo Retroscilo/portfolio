@@ -20,7 +20,14 @@ const Headline = ({ words }) => {
     }, words.length * 600 + 2150) // text animation + caret blinking + cover duration - 350ms
   })
   return (
-    <div style={{ display: "flex", alignItems: "center", height: "100%" }}>
+    <div
+      style={{
+        display: "flex",
+        alignItems: "center",
+        height: "100%",
+        overflow: "hidden",
+      }}
+    >
       <div className="hero__landing" sx={{ padding: 5 }}>
         <span style={{ fontWeight: "bold" }}>RENCONTREZ&nbsp;</span>
         <div style={{ position: "relative" }}>
