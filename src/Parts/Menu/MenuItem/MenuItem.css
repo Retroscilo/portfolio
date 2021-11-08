@@ -109,7 +109,7 @@
   }
 
   .menu-item > * {
-    font-size: 3em !important;
+    font-size: 2em !important;
     display: flex;
     align-items: center;
   }

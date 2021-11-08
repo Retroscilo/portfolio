@@ -90,12 +90,13 @@ a {
 
 @media (max-width: 550px) {
   .contact {
-    grid-template-rows: 20% 80%;
+    grid-template-rows: 30% 70%;
   }
 
   .contact__shape {
     width: 10em;
     height: 10em;
+    align-self: center;
   }
 
   .contact__shape p {

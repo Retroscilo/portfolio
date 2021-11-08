@@ -37,7 +37,7 @@
 @media (max-width: 500px) {
   .menu__title {
     transform: translateX(0px);
-    font-size: 2.5em;
+    font-size: 2em;
     margin-bottom: 90px;
   }
 }
