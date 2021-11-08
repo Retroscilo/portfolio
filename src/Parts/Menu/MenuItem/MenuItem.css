@@ -139,11 +139,13 @@
 
 @media (max-width: 450px) {
   .menu-item__shape--right {
-    right: 0%;
+    top: 120%;
+    right: -10%;
   }
   
   .menu-item__shape--left {
-    left: 0%;
+    top: 120%;
+    left: -10%;
   }
 
   .menu-item__arrow {
