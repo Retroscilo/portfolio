@@ -96,3 +96,9 @@
   }
 }
 
+@media (max-width: 550px) {
+  .CTA.L {
+    font-size: 1.2em
+  }
+}
+

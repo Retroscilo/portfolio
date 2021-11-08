@@ -89,6 +89,19 @@ a {
 }
 
 @media (max-width: 550px) {
+  .contact {
+    grid-template-rows: 20% 80%;
+  }
+
+  .contact__shape {
+    width: 10em;
+    height: 10em;
+  }
+
+  .contact__shape p {
+    font-size: 3em;
+  }
+
   .contact__form p {
     font-size: 1.6em;
   }

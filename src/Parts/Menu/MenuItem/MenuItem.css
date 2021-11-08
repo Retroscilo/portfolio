@@ -138,24 +138,12 @@
 }
 
 @media (max-width: 450px) {
-  .menu-item > * {
-    font-size: 1em !important;
-    display: flex;
-    align-items: center;
-  }
-
-  .menu-item__shape {
-    width: 6em;
-    height: 6em;
-    z-index: -1;
-  }
-
   .menu-item__shape--right {
-    right: -50%;
+    right: 0%;
   }
   
   .menu-item__shape--left {
-    left: -50%;
+    left: 0%;
   }
 
   .menu-item__arrow {
