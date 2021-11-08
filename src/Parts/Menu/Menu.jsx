@@ -4,6 +4,7 @@ import { MenuSelection } from "./MenuSelection"
 import Details from "../Details"
 import Block from "../../Components/Block"
 import { Contact } from "../Contact"
+import { ReactComponent as Arrow } from "../../assets/images/arrow-black.svg"
 
 function reducer(state, action) {
   switch (action.type) {
@@ -33,6 +34,13 @@ const initialState = Object.keys(Details).reduce(
 const Menu = () => {
   const [state, dispatch] = useReducer(reducer, initialState)
 
+  const scrollAndDispatch = (callback) => {
+    window.scrollTo({
+      top: 2 * window.innerHeight,
+      behavior: "smooth",
+    })
+    dispatch(callback)
+  }
   return (
     <Block
       background="var(--selection-color)"
@@ -44,14 +52,30 @@ const Menu = () => {
         paddingTop: "30vh",
       }}
     >
-      <MenuSelection display={state.selection} setDisplayState={dispatch} />
-      <Details.Commerce display={state.Commerce} setDisplayState={dispatch} />
-      <Details.Vitrine display={state.Vitrine} setDisplayState={dispatch} />
+      <MenuSelection
+        display={state.selection}
+        setDisplayState={scrollAndDispatch}
+      />
+      <Details.Commerce
+        display={state.Commerce}
+        setDisplayState={scrollAndDispatch}
+      />
+      <Details.Vitrine
+        display={state.Vitrine}
+        setDisplayState={scrollAndDispatch}
+      />
       <Details.Application
         display={state.Application}
-        setDisplayState={dispatch}
+        setDisplayState={scrollAndDispatch}
       />
-      <Contact display={state.contact} setDisplayState={dispatch} />
+      <Contact display={state.contact} setDisplayState={scrollAndDispatch} />
+      <div
+        className={`meet__scrolldown ${
+          state.selection ? "--is-opaque" : "--is-faded"
+        }`}
+      >
+        Meet <Arrow />
+      </div>
     </Block>
   )
 }

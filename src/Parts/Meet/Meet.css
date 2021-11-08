@@ -32,19 +32,24 @@
 @media (max-width: 650px) {
   .meet {
     grid-template-columns: 100%;
+    grid-template-rows: 35% 65%;
+  }
+
+  .meet__shape {
+    width: 13em;
+    height: 13em;
+    justify-self: center;
+    align-self: center;
   }
 
   .meet__text {
     grid-column-start: 1;
     padding: 50px 100px;
     font-size: 1.2em;
+    margin-bottom: 45pt;
   }
 }
 @media (max-width: 550px) {
-  .meet {
-    grid-template-columns: 100%;
-  }
-
   .meet__text {
     grid-column-start: 1;
     padding: 50px 20px;

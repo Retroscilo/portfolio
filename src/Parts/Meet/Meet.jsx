@@ -25,11 +25,11 @@ const Meet = () => {
         <p className="meet__text">
           Passionné d’informatique et de jeux vidéo depuis que l’on m’a interdit
           d’avoir une console, j’ai préparé un bachelor de développement web en
-          alternance, obtenu avec succès en 2021. <br /> Depuis, je me suis
-          lancé dans le freelancing et j’aide les entreprises à entreprendre ou
-          poursuivre leur développement digital. <br /> Passionné de nouvelles
-          technologies et axé sur le développement créatif, j’aime les projets
-          ambitieux qui me demandent de me dépasser.
+          alternance, obtenu avec succès en 2021. <br /> <br /> Depuis, je me
+          suis lancé dans le freelancing et j’aide les entreprises à
+          entreprendre ou poursuivre leur développement digital. <br />{" "}
+          Passionné de nouvelles technologies et axé sur le développement
+          créatif, j’aime les projets ambitieux qui me demandent de me dépasser.
         </p>
       </div>
     </Block>

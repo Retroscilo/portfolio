@@ -15,6 +15,20 @@
   transform: translateX(-200px);
 }
 
+.meet__scrolldown {
+  position: absolute;
+  font-weight: 500;
+  left: 50%;
+  transform: translateX(-50%);
+  bottom: 30px;
+}
+
+.meet__scrolldown svg {
+  width: 15px;
+  height: 15px;
+  animation: arrowDown 2s ease-in-out infinite alternate;
+}
+
 @media (max-width: 1000px) {
   .menu__title {
     transform: translateX(-50px)
@@ -23,15 +37,10 @@
 
 @media (max-width: 700px) {
   .menu__title {
-    font-size: 2em;
-  }
-}
-
-@media (max-width: 700px) {
-  .menu__title {
     transform: translateX(0px);
     font-size: 3em;
     margin-bottom: 90px;
+    font-size: 2em;
   }
 }
 @media (max-width: 500px) {
@@ -39,6 +48,10 @@
     transform: translateX(0px);
     font-size: 2em;
     margin-bottom: 90px;
+  }
+
+  .meet__scrolldown {
+    bottom: 50pt;
   }
 }
 
