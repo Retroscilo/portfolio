@@ -105,25 +105,29 @@
 @media (max-width: 700px) {
   .menu-item {
     font-size: unset;
+    margin-bottom: 100px;
   }
 
   .menu-item > * {
-    font-size: 1.7em !important;
+    font-size: 3em !important;
     display: flex;
     align-items: center;
   }
 
   .menu-item__shape {
     width: 5em;
+    z-index: -1;
     height: 5em;
   }
 
   .menu-item__shape--right {
-    right: -50%;
+    top: 30%;
+    right: -30%;
   }
   
   .menu-item__shape--left {
-    left: -50%;
+    top: 30%;
+    left: -30%;
   }
 
   .menu-item__arrow {

@@ -3,14 +3,17 @@
   width: 100%;
   position: absolute;
   top: 0;
+  z-index: 1;
 }
 
 .hero__intro-background {
   width: 100vw;
   height: 100vh;
   position: sticky;
+  position: -webkit-sticky;
   top: 0;
   object-fit: contain;
+  overflow: hidden;
 }
 
 .hero__intro-punchline {
@@ -19,7 +22,8 @@
   display: flex;
   justify-content: center;
   align-items: center;
-  position: relative;
+  position: absolute;
+  bottom: 0;
   z-index: 2;
   font-size: 2.2em;
   font-weight: bold;

@@ -75,3 +75,7 @@ html {
 	--application-color: #B6BBED;
 	--commerce-color: #B6D6ED;
 }
+
+button, div {
+	outline: none;
+}

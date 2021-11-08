@@ -13,7 +13,7 @@ const MenuItem = ({ children, left, shapeOptions, background }) => {
     document.body.style.backgroundColor = !isHover ? background : "var(--selection-color)"
   }
   useEffect(() => {
-    if (window.innerWidth < 600) setIsHover(true)
+    if (window.innerWidth < 700) setIsHover(true)
   }, [window])
 
   return (

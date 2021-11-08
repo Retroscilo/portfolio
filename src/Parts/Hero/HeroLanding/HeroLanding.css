@@ -8,6 +8,12 @@
   transform: translateX(-50%);
 }
 
+@media(max-width: 600px) {
+  .scrollDown {
+    bottom: 130px;
+  }
+}
+
 .scrollDown--visible {
   opacity: 1;
   transition: opacity .4s ease-in-out;

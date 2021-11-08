@@ -30,7 +30,7 @@
 @media (max-width: 700px) {
   .menu__title {
     transform: translateX(0px);
-    font-size: 1.6em;
+    font-size: 3em;
     margin-bottom: 90px;
   }
 }

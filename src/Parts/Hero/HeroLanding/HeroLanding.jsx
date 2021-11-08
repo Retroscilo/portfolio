@@ -52,7 +52,10 @@ const Headline = ({ words }) => {
 const HeroLanding = forwardRef(({ opacity }, ref) => {
   const scrollDown = useRef(null)
   function scroll() {
-    window.scrollTo(0, window.innerHeight)
+    window.scrollTo({
+      top: window.innerHeight,
+      behavior: "smooth",
+    })
   }
   const [words] = useState([
     "créatif",
@@ -82,7 +85,7 @@ const HeroLanding = forwardRef(({ opacity }, ref) => {
         ref={scrollDown}
         className="scrollDown"
       >
-        Intéressé ?<ArrowDown className="arrowDown" />
+        Intéressé.e ?<ArrowDown className="arrowDown" />
       </div>
     </div>
   )
