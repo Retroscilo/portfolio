@@ -5,7 +5,7 @@ import Details from "../Details"
 import Block from "../../Components/Block"
 import { Contact } from "../Contact"
 import { ReactComponent as Arrow } from "../../assets/images/arrow-black.svg"
-
+/* eslint-disable */
 function reducer(state, action) {
   switch (action.type) {
     case "discover":
@@ -33,14 +33,18 @@ const initialState = Object.keys(Details).reduce(
 
 const Menu = () => {
   const [state, dispatch] = useReducer(reducer, initialState)
-
-  const scrollAndDispatch = (callback) => {
+  function scroll() {
     window.scrollTo({
       top: 2 * window.innerHeight,
       behavior: "smooth",
     })
+  }
+
+  const scrollAndDispatch = callback => {
+    scroll()
     dispatch(callback)
   }
+
   return (
     <Block
       background="var(--selection-color)"
@@ -52,18 +56,9 @@ const Menu = () => {
         paddingTop: "30vh",
       }}
     >
-      <MenuSelection
-        display={state.selection}
-        setDisplayState={scrollAndDispatch}
-      />
-      <Details.Commerce
-        display={state.Commerce}
-        setDisplayState={scrollAndDispatch}
-      />
-      <Details.Vitrine
-        display={state.Vitrine}
-        setDisplayState={scrollAndDispatch}
-      />
+      <MenuSelection display={state.selection} setDisplayState={scrollAndDispatch} />
+      <Details.Commerce display={state.Commerce} setDisplayState={scrollAndDispatch} />
+      <Details.Vitrine display={state.Vitrine} setDisplayState={scrollAndDispatch} />
       <Details.Application
         display={state.Application}
         setDisplayState={scrollAndDispatch}

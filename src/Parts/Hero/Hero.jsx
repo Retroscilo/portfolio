@@ -6,6 +6,7 @@ const Hero = () => {
   const intro = useRef(null)
   const landing = useRef(null)
   const [windowHeight, setWindowHeight] = useState(undefined)
+
   useEffect(() => {
     setWindowHeight(window.innerHeight)
     const onResize = () => setWindowHeight(window.innerHeight)
