@@ -31,6 +31,7 @@ const Meet = () => {
           Passionné de nouvelles technologies et axé sur le développement
           créatif, j’aime les projets ambitieux qui me demandent de me dépasser.
         </p>
+        <div className="incoming">Les projets arrivent prochainement !</div>
       </div>
     </Block>
   )

@@ -22,8 +22,8 @@ const MenuSelection = ({ display, setDisplayState }) => {
     if (display) {
       menuSelectionRef.current.style.display = "flex"
       document.body.style.backgroundColor = "var(--selection-color)"
-      const array = [Vitrine, Commerce, Application]
-      array.forEach((ref, i) => {
+      const refArray = [Vitrine, Commerce, Application]
+      refArray.forEach((ref, i) => {
         const node = ref.current
         node.style.visibility = "hidden"
         setTimeout(() => {
