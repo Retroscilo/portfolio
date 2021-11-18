@@ -1,8 +1,6 @@
 import { useEffect } from "react"
 import { Provider } from "jotai"
-import { Hero, Menu, Meet } from "./Parts"
-
-// kick off the polyfill!
+import { Hero, Menu, Meet, Atec, Qarte, Fireforce, Spaceodyssey } from "./Parts"
 
 function App() {
   useEffect(() => {
@@ -16,6 +14,10 @@ function App() {
         <Hero />
         <Menu />
         <Meet />
+        <Atec />
+        <Qarte />
+        <Fireforce />
+        <Spaceodyssey />
       </Provider>
     </div>
   )

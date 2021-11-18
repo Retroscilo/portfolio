@@ -1,4 +1,4 @@
-import { useEffect, useRef } from "react"
+import { useEffect, useRef, useState } from "react"
 import Block from "../../Components/Block"
 import { ShiftingShape } from "../../Components/shiftingShape"
 import "./Meet.css"
@@ -8,13 +8,23 @@ const shapeOptions = {
   imgSrc: meet,
   skew: { x: 17, y: -10 },
 }
+const options = {
+  root: null,
+  rootMargin: "0px",
+  threshold: [0.2],
+}
 
 const Meet = () => {
+  const [value, setValue] = useState(0) // integer state
+  const forceUpdate = () => setValue(value + 1)
+
   const thirdBlock = useRef(null)
 
   useEffect(() => {
-    console.log(thirdBlock)
-  }, [])
+    const Observer = new IntersectionObserver(forceUpdate, options)
+    Observer.observe(thirdBlock.current)
+    return () => Observer.disconnect()
+  }, [forceUpdate])
 
   return (
     <Block background="#EDD3B6">
@@ -31,7 +41,6 @@ const Meet = () => {
           Passionné de nouvelles technologies et axé sur le développement
           créatif, j’aime les projets ambitieux qui me demandent de me dépasser.
         </p>
-        <div className="incoming">Les projets arrivent prochainement !</div>
       </div>
     </Block>
   )

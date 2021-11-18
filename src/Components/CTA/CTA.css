@@ -57,11 +57,11 @@
 }
 
 .CTA__arrow--right {
-  margin-left: 10px;
+  padding-left: 10px;
 }
 
 .CTA__arrow--left {
-  margin-right: 10px;
+  padding-right: 10px;
 }
 
 .CTA__arrow > * {

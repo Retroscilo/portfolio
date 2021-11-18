@@ -45,7 +45,6 @@ const ShiftingShape = ({ isVisible, shapeOptions }) => {
   useEffect(() => {
     if (!isVisible) return
     const shapeAnimation = requestAnimationFrame(() => {
-      console.log('call : ', shapeAnimation, imgSrc)
       animateShape(state.start, dispatch, isVisible, shapeAnimation, imgSrc)
     })
     if (isVisible === "always") {
