@@ -38,7 +38,7 @@ const Fireforce = () => {
           <img src={ReactBadge} alt="" />
         </div>
         <div className="project__text">
-          <div className="project__title">Fireforce</div>
+          <div className="project__title">FIREFORCE</div>
           <p style={{ marginTop: "0" }}>
             Projet scolaire portant sur les possibilitées d’un bâtiment
             intelligent doté de divers “sensors”, nous devions imaginer un

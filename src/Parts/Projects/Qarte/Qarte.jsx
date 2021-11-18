@@ -36,7 +36,7 @@ const Qarte = () => {
           <ShiftingShape isVisible={visible} shapeOptions={shapeOptions} />
         </div>
         <div className="project__text">
-          <div className="project__title">Qarte</div>
+          <div className="project__title">QARTE</div>
           <div className="project__badge-container">
             <img src={Next} alt="" />
             <img src={ReactBadge} alt="" />

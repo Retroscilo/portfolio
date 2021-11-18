@@ -45,8 +45,8 @@
 
 .project__badge-container {
   position: absolute;
-  top: 50pt;
-  right: 0;
+  top: 38pt;
+  right: 20px;
 }
 
 .project__badge-container img {
