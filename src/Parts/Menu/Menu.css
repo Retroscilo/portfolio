@@ -21,6 +21,7 @@
   left: 50%;
   transform: translateX(-50%);
   bottom: 30px;
+  cursor: pointer;
 }
 
 .meet__scrolldown svg {

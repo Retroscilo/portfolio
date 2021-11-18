@@ -65,6 +65,12 @@ const Menu = () => {
       />
       <Contact display={state.contact} setDisplayState={scrollAndDispatch} />
       <div
+        onClick={() => {
+            window.scrollTo({
+              top: 3.25 * window.innerHeight,
+              behavior: "smooth",
+            })
+        }}
         className={`meet__scrolldown ${
           state.selection ? "--is-opaque" : "--is-faded"
         }`}
