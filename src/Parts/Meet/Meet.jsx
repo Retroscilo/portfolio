@@ -16,15 +16,17 @@ const options = {
 
 const Meet = () => {
   const [value, setValue] = useState(0) // integer state
-  const forceUpdate = () => setValue(value + 1)
 
   const thirdBlock = useRef(null)
 
   useEffect(() => {
-    const Observer = new IntersectionObserver(forceUpdate, options)
+    const Observer = new IntersectionObserver(
+      () => setValue(value + 1),
+      options
+    )
     Observer.observe(thirdBlock.current)
     return () => Observer.disconnect()
-  }, [forceUpdate])
+  }, [value])
 
   return (
     <Block background="#EDD3B6">
