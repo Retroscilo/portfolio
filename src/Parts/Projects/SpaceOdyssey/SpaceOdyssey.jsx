@@ -53,10 +53,10 @@ const Spaceodyssey = () => {
             </a>
           </CTA>
           <p>
-            Jeux video créé à l’occasion d’un cours sur le moteur de jeu unity.
+            Jeux video créé à l’occasion d’un cours sur le moteur de jeu Unity.
             Nous avons appris les concepts de base d’un endless runner et du
-            C++, puis nous avons dû créer le notre en 3 jours. <br /> <br /> Je
-            me suis occupé de gérer les controles du vaisseau, l’apparition des
+            C++, puis nous avons dû créer le notre en 3 jours. <br /> <br />
+            J&apos;ai créé les contrôles du vaisseau, l’apparition des
             asteroïdes, les animations de controle et de collision, la musique,
             les ressources graphiques, l’optimisation de la mémoire (disparition
             des débris et des astéroïdes une fois hors de vue). <br /> <br />

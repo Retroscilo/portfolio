@@ -45,17 +45,17 @@ const Qarte = () => {
           <p style={{ marginTop: "0" }}>
             Premiers pas sous nextJS, toujours en développement. <br /> <br />{" "}
             Avec Qarte, je souhaite que les restaurateurs puissent avoir accès
-            gratuitement à des menus QR esthétique et personnalisable. <br />{" "}
+            gratuitement à des menus QR esthétiques et personnalisables. <br />{" "}
             <br />
-            L’application est finie à 65%:
+            L’application est finie à 65% :
             <ul>
               <li>
                 Le backend est fonctionnel (création de catégorie, de produits,
                 etc...)
               </li>
               <li>
-                l’authentication est en place: création de profil, récupération
-                du mot de passe... (cookies - next-iron-session)
+                l’authentification est en place : création de profil,
+                récupération du mot de passe... (cookies - next-iron-session)
               </li>
               <li>
                 génération de QR code à partir d’un id de menu est
@@ -65,7 +65,7 @@ const Qarte = () => {
             </ul>
             <br />
             Il reste à produire la landing page, le HUB utilisateur (accès aux
-            différents menu) et bien évidemment la tonne de tests.
+            différents menu) et bien évidemment les (nombreux) tests.
           </p>
         </div>
       </div>

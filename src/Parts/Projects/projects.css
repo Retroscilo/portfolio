@@ -21,6 +21,7 @@
 .project__text p {
   line-height: 120%;
   margin-top: 60px;
+  padding-right: 40px;
 }
 
 .project__text p ul {

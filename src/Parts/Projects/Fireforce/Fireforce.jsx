@@ -40,7 +40,7 @@ const Fireforce = () => {
         <div className="project__text">
           <div className="project__title">Fireforce</div>
           <p style={{ marginTop: "0" }}>
-            Projet scolaire portant sur les possibilitées d’un batiment
+            Projet scolaire portant sur les possibilitées d’un bâtiment
             intelligent doté de divers “sensors”, nous devions imaginer un
             produit faisant usage des possibilitées offertes par une telle
             infrastructure. <br /> <br />

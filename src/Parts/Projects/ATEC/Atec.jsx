@@ -51,10 +51,10 @@ const Atec = () => {
             </a>
           </CTA>
           <p>
-            Projet réalisé pour une agence d’architecture, j’ai designé avec
-            Figma le site à partir d’un contenu textuel déjà fourni. <br /> Le
-            client avait besoin, en plus de son site, d’un espace de partage de
-            fichier protégé par mot de passe. <br /> J’ai donc utilisé Strapi
+            Projet réalisé pour une agence d’architecture. <br /> J’ai designé
+            le site avec Figma à partir d’un contenu textuel déjà fourni. <br />{" "}
+            Le client avait besoin, en plus de son site, d’un espace de partage
+            de fichier protégé par mot de passe. J’ai donc utilisé Strapi
             (headless CMS) pour créer un backoffice d’où mon client pouvait
             gérer son contenu, ses images et ses fichiers.
           </p>
