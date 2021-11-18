@@ -25,7 +25,7 @@ const animateShape = (start, dispatch, isVisible, id, src) => {
   const rotation = 3 * Math.sin(0.0008 * interval)
   const moveX = 4 * Math.sin(0.0008 * interval)
   const moveY = 3 * Math.cos(0.001 * interval)
-  // console.log(id, src)
+  
   dispatch({
     first: { x: moveX + rotation, y: moveY - rotation },
     second: { x: -moveX + rotation, y: moveY - rotation },

@@ -3,6 +3,8 @@ import Block from "../../Components/Block"
 import { ShiftingShape } from "../../Components/shiftingShape"
 import "./Meet.css"
 import meet from "../../assets/images/meet.jpg"
+import { ReactComponent as Arrow } from "../../assets/images/arrow-black.svg"
+/* eslint-disable */
 
 const shapeOptions = {
   imgSrc: meet,
@@ -26,7 +28,10 @@ const Meet = () => {
       else setValue("always")
     }, options)
     Observer.observe(thirdBlock.current)
-    return () => Observer.disconnect()
+    return () => {
+      setValue(false)
+      Observer.disconnect()
+    }
   }, [])
 
   return (
@@ -44,6 +49,18 @@ const Meet = () => {
           Passionné de nouvelles technologies et axé sur le développement
           créatif, j’aime les projets ambitieux qui me demandent de me dépasser.
         </p>
+        <div
+          onClick={() => {
+            window.scrollTo({
+              top: 4.25 * window.innerHeight,
+              behavior: "smooth",
+            })
+          }}
+          className={`meet__scrolldown --is-opaque`}
+          style={{ bottom: "150px" }}
+        >
+          Réalisations <Arrow />
+        </div>
       </div>
     </Block>
   )

@@ -24,6 +24,7 @@
     "no-plusplus": "off",
     "react/no-array-index-key": "off",
     "no-unused-vars": "off",
-    "no-shadow": "off"
+    "no-shadow": "off",
+    "react/no-unescaped-entities": "off"
   }
 }

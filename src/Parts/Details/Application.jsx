@@ -27,7 +27,7 @@ const Application = ({ display, setDisplayState }) => (
         vous trouver la solution la plus adaptée à vos besoins, et la plus
         économique.
       </Details.Content>
-      <Details.Content title="Un besoin, mais pas d’idée?" timeout={400}>
+      <Details.Content title="Un besoin, mais pas d’idée ?" timeout={400}>
         Contactez-moi, et imaginons ensemble une réponse à vos challenges
         quotidien.
       </Details.Content>

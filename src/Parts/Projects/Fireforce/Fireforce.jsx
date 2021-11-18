@@ -25,7 +25,10 @@ const Fireforce = () => {
       else setValue("always")
     }, options)
     Observer.observe(thirdBlock.current)
-    return () => Observer.disconnect()
+    return () => {
+      setValue(false)
+      Observer.disconnect()
+    }
   }, [])
   return (
     <Block background="#EDEAA2">

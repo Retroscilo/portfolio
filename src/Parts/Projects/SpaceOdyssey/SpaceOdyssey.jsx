@@ -25,7 +25,10 @@ const Spaceodyssey = () => {
       else setValue("always")
     }, options)
     Observer.observe(thirdBlock.current)
-    return () => Observer.disconnect()
+    return () => {
+      setValue(false)
+      Observer.disconnect()
+    }
   }, [])
   return (
     <Block background="#1E1E1E">
@@ -44,7 +47,6 @@ const Spaceodyssey = () => {
           <div className="project__title">SPACE ODYSSEY</div>
           <CTA visible position="link">
             <a
-              className="project__link"
               href="http://spaceodyssey.s3-website.eu-central-1.amazonaws.com"
               target="_blank"
               rel="noreferrer"

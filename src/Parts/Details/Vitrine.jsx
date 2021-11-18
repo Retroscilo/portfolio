@@ -14,19 +14,15 @@ const Vitrine = ({ display, setDisplayState }) => (
   >
     <Details.ContentContainer left>
       <Details.Content title="Personnalisez" timeout={200}>
-        Votre site n’est pas statique: <br />
-        avec Strapi, vous disposez d’une page qui vous est réservée, a partir de
+        Votre site n’est pas statique : <br />
+        avec Strapi, vous disposez d’une page qui vous est réservée, à partir de
         laquelle vous pouvez modifier, ajouter ou supprimer du contenu
         facilement.
       </Details.Content>
-      <Details.Content
-        title="Profitez des dernières technologies"
-        timeout={300}
-      >
-        Vous profiterez d’un site utilisant les dernières technologies web:
-        NextJS, Strapi et Stripe pour gérer les paiements. Vous bénéficirez des
-        meilleures performances pour une navigation parfaite, et du meilleur
-        référencement possible.
+      <Details.Content title="Sortez du lot" timeout={300}>
+        Nous discuterons ensemble d'un design qui vous plait. Je vous conseille
+        en terme de contenu, d'image et de UI pour que votre site soit au top de
+        sa forme.
       </Details.Content>
       <Details.Content title="Pas de frais cachés" timeout={400}>
         Vous payez la construction du site et le nom de domaine, mais pas de

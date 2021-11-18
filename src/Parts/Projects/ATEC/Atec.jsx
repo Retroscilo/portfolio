@@ -26,7 +26,10 @@ const Atec = () => {
       else setValue("always")
     }, options)
     Observer.observe(thirdBlock.current)
-    return () => Observer.disconnect()
+    return () => {
+      setValue(false)
+      Observer.disconnect()
+    }
   }, [])
   return (
     <Block background="white">
@@ -41,12 +44,7 @@ const Atec = () => {
         <div className="project__text">
           <div className="project__title">A.T.E.C.</div>
           <CTA visible position="link">
-            <a
-              className="project__link"
-              href="https://atec.agency"
-              target="_blank"
-              rel="noreferrer"
-            >
+            <a href="https://atec.agency" target="_blank" rel="noreferrer">
               Voir le site
             </a>
           </CTA>
