@@ -6,6 +6,7 @@ import { ShiftingShape } from "../../../Components/shiftingShape"
 import Next from "../../../assets/badges/next.png"
 import ReactBadge from "../../../assets/badges/react.png"
 import Mongo from "../../../assets/badges/mongo.png"
+import { useObserver } from "../../../utils/useObserver"
 
 const shapeOptions = { imgSrc: QarteImg, skew: { x: -5, y: 5 } }
 
@@ -16,27 +17,13 @@ const options = {
 }
 
 const Qarte = () => {
-  const [visible, setValue] = useState(false) // integer state
-
   const thirdBlock = useRef(null)
-
-  useEffect(() => {
-    const Observer = new IntersectionObserver((entries) => {
-      const intersecting = entries[0].isIntersecting
-      if (intersecting) setValue(true)
-      else setValue("always")
-    }, options)
-    Observer.observe(thirdBlock.current)
-    return () => {
-      setValue(false)
-      Observer.disconnect()
-    }
-  }, [])
+  const onScreen = useObserver(thirdBlock)
   return (
     <Block background="#EDB6B6">
       <div ref={thirdBlock} className="project__container">
         <div className="project__shape">
-          <ShiftingShape isVisible={visible} shapeOptions={shapeOptions} />
+          <ShiftingShape isVisible={onScreen} shapeOptions={shapeOptions} />
         </div>
         <div className="project__text">
           <div className="project__title">QARTE</div>

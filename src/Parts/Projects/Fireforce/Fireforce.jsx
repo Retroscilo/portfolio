@@ -5,6 +5,7 @@ import FireforceImg from "./fireforce.jpg"
 import { ShiftingShape } from "../../../Components/shiftingShape"
 import ReactBadge from "../../../assets/badges/react.png"
 import Python from "../../../assets/badges/python.png"
+import { useObserver } from "../../../utils/useObserver"
 
 const shapeOptions = { imgSrc: FireforceImg, skew: { x: 5, y: 5 } }
 const options = {
@@ -14,27 +15,14 @@ const options = {
 }
 
 const Fireforce = () => {
-  const [visible, setValue] = useState(false) // integer state
-
   const thirdBlock = useRef(null)
+  const onScreen = useObserver(thirdBlock)
 
-  useEffect(() => {
-    const Observer = new IntersectionObserver((entries) => {
-      const intersecting = entries[0].isIntersecting
-      if (intersecting) setValue(true)
-      else setValue("always")
-    }, options)
-    Observer.observe(thirdBlock.current)
-    return () => {
-      setValue(false)
-      Observer.disconnect()
-    }
-  }, [])
   return (
     <Block background="#EDEAA2">
       <div ref={thirdBlock} className="project__container">
         <div className="project__shape">
-          <ShiftingShape isVisible={visible} shapeOptions={shapeOptions} />
+          <ShiftingShape isVisible={onScreen} shapeOptions={shapeOptions} />
         </div>
         <div className="project__badge-container">
           <img src={Python} alt="" />

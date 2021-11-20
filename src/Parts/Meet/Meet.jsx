@@ -4,6 +4,7 @@ import { ShiftingShape } from "../../Components/shiftingShape"
 import "./Meet.css"
 import meet from "../../assets/images/meet.jpg"
 import { ReactComponent as Arrow } from "../../assets/images/arrow-black.svg"
+import { useObserver } from "../../utils/useObserver"
 /* eslint-disable */
 
 const shapeOptions = {
@@ -17,28 +18,15 @@ const options = {
 }
 
 const Meet = () => {
-  const [visible, setValue] = useState(false) // integer state
-
   const thirdBlock = useRef(null)
-
-  useEffect(() => {
-    const Observer = new IntersectionObserver((entries) => {
-      const intersecting = entries[0].isIntersecting
-      if (intersecting) setValue(true)
-      else setValue("always")
-    }, options)
-    Observer.observe(thirdBlock.current)
-    return () => {
-      setValue(false)
-      Observer.disconnect()
-    }
-  }, [])
+  const onScreen = useObserver(thirdBlock)
+  useEffect(() => console.log("meet", onScreen))
 
   return (
     <Block background="#EDD3B6">
       <div className="meet" ref={thirdBlock}>
         <div className="meet__shape">
-          <ShiftingShape isVisible={visible} shapeOptions={shapeOptions} />
+          <ShiftingShape isVisible={onScreen} shapeOptions={shapeOptions} />
         </div>
         <p className="meet__text">
           Passionné d’informatique et de jeux vidéo depuis que l’on m’a interdit

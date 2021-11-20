@@ -1,4 +1,4 @@
-import { useState } from "react"
+import { useState, useEffect, useMemo } from "react"
 /* eslint-disable react-hooks/rules-of-hooks */
 
 function createBackgroundObserver(newColor) {
@@ -22,4 +22,24 @@ function createBackgroundObserver(newColor) {
   return new IntersectionObserver(callback, options)
 }
 
-export { createBackgroundObserver }
+function useObserver(ref) {
+  const [isIntersecting, setIntersecting] = useState(false)
+
+  const observer = useMemo(
+    () =>
+      new IntersectionObserver(
+        ([entry]) => setIntersecting(entry.isIntersecting),
+        { threshold: [0.55, 0.6] }
+      ),
+    []
+  )
+
+  useEffect(() => {
+    observer.observe(ref.current)
+    return () => observer.disconnect()
+  }, [observer, ref])
+
+  return isIntersecting
+}
+
+export { createBackgroundObserver, useObserver }

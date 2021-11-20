@@ -5,6 +5,7 @@ import SpaceImg from "./Space.png"
 import { ShiftingShape } from "../../../Components/shiftingShape"
 import { CTA } from "../../../Components/CTA"
 import C from "../../../assets/badges/C++.png"
+import { useObserver } from "../../../utils/useObserver"
 
 const shapeOptions = { imgSrc: SpaceImg, skew: { x: 5, y: 5 } }
 const options = {
@@ -14,22 +15,8 @@ const options = {
 }
 
 const Spaceodyssey = () => {
-  const [visible, setValue] = useState(false) // integer state
-
   const thirdBlock = useRef(null)
-
-  useEffect(() => {
-    const Observer = new IntersectionObserver((entries) => {
-      const intersecting = entries[0].isIntersecting
-      if (intersecting) setValue(true)
-      else setValue("always")
-    }, options)
-    Observer.observe(thirdBlock.current)
-    return () => {
-      setValue(false)
-      Observer.disconnect()
-    }
-  }, [])
+  const onScreen = useObserver(thirdBlock)
   return (
     <Block background="#1E1E1E">
       <div
@@ -38,7 +25,7 @@ const Spaceodyssey = () => {
         style={{ color: "white" }}
       >
         <div className="project__shape">
-          <ShiftingShape isVisible={visible} shapeOptions={shapeOptions} />
+          <ShiftingShape isVisible={onScreen} shapeOptions={shapeOptions} />
         </div>
         <div className="project__badge-container">
           <img src={C} alt="" />
