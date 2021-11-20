@@ -13,6 +13,7 @@ function App() {
       <Provider>
         <Hero />
         <div
+          id="scrollSnap"
           style={{
             scrollSnapType: "y mandatory",
             height: "100vh",

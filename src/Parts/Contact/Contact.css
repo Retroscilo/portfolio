@@ -2,9 +2,9 @@
   display: grid;
   grid-template-columns: 30% 70%;
   position: absolute;
-  top: calc(15vh + 50%);
-  transform: translateY(-50%);
   z-index: 200;
+  top: 50%;
+  transform: translateY(-50%);
 }
 
 .contact .return {
@@ -62,6 +62,8 @@ a {
   .contact {
     grid-template-columns: 100%;
     grid-template-rows: 30% 70%;
+    left: 50%;
+    transform: translate(-50%, -50%);
   }
 
   .contact__form {

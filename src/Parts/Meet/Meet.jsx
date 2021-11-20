@@ -2,7 +2,7 @@ import { useEffect, useRef, useState } from "react"
 import Block from "../../Components/Block"
 import { ShiftingShape } from "../../Components/shiftingShape"
 import "./Meet.css"
-import meet from "../../assets/images/meet.jpg"
+import meet from "../../assets/images/black.jpg"
 import { ReactComponent as Arrow } from "../../assets/images/arrow-black.svg"
 import { isOnScreen } from "../../utils/useObserver"
 /* eslint-disable */
@@ -25,6 +25,7 @@ const Meet = () => {
     <Block background="#EDD3B6" style={{ scrollSnapAlign: "start" }}>
       <div className="meet" ref={thirdBlock}>
         <div className="meet__shape">
+          <p>Meet</p>
           <ShiftingShape isVisible={onScreen} shapeOptions={shapeOptions} />
         </div>
         <p className="meet__text">
@@ -38,8 +39,8 @@ const Meet = () => {
         </p>
         <div
           onClick={() => {
-            window.scrollTo({
-              top: 4.25 * window.innerHeight,
+            document.querySelector("#scrollSnap").scrollTo({
+              top: 2 * window.innerHeight,
               behavior: "smooth",
             })
           }}

@@ -32,8 +32,7 @@ const Hero = () => {
   }
 
   const scrollSnapObserverCallback = ([ entry ]) => {
-     if (!entry.isIntersecting && entry.intersectionRatio > 0.3) {
-       console.log(entry)
+     if (!entry.isIntersecting) {
        hero.current.style.transform = "translateY(-200vh)"
       }
   }

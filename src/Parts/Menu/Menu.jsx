@@ -63,8 +63,8 @@ const Menu = () => {
       <Contact display={state.contact} setDisplayState={scrollAndDispatch} />
       <div
         onClick={() => {
-            window.scrollTo({
-              top: 3.25 * window.innerHeight,
+            document.querySelector("#scrollSnap").scrollTo({
+              top: window.innerHeight,
               behavior: "smooth",
             })
         }}
