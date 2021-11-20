@@ -5,20 +5,16 @@ import SpaceImg from "./Space.png"
 import { ShiftingShape } from "../../../Components/shiftingShape"
 import { CTA } from "../../../Components/CTA"
 import C from "../../../assets/badges/C++.png"
-import { useObserver } from "../../../utils/useObserver"
+import { isOnScreen } from "../../../utils/useObserver"
 
 const shapeOptions = { imgSrc: SpaceImg, skew: { x: 5, y: 5 } }
-const options = {
-  root: null,
-  rootMargin: "0px",
-  threshold: [0.2],
-}
 
 const Spaceodyssey = () => {
   const thirdBlock = useRef(null)
-  const onScreen = useObserver(thirdBlock)
+  const onScreen = isOnScreen(thirdBlock)
+
   return (
-    <Block background="#1E1E1E">
+    <Block background="#1E1E1E" style={{ scrollSnapAlign: "start" }}>
       <div
         ref={thirdBlock}
         className="project__container"

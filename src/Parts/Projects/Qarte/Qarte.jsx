@@ -6,21 +6,15 @@ import { ShiftingShape } from "../../../Components/shiftingShape"
 import Next from "../../../assets/badges/next.png"
 import ReactBadge from "../../../assets/badges/react.png"
 import Mongo from "../../../assets/badges/mongo.png"
-import { useObserver } from "../../../utils/useObserver"
+import { isOnScreen } from "../../../utils/useObserver"
 
 const shapeOptions = { imgSrc: QarteImg, skew: { x: -5, y: 5 } }
 
-const options = {
-  root: null,
-  rootMargin: "0px",
-  threshold: [0.2],
-}
-
 const Qarte = () => {
   const thirdBlock = useRef(null)
-  const onScreen = useObserver(thirdBlock)
+  const onScreen = isOnScreen(thirdBlock)
   return (
-    <Block background="#EDB6B6">
+    <Block background="#EDB6B6" style={{ scrollSnapAlign: "start" }}>
       <div ref={thirdBlock} className="project__container">
         <div className="project__shape">
           <ShiftingShape isVisible={onScreen} shapeOptions={shapeOptions} />

@@ -5,6 +5,7 @@ import Details from "../Details"
 import Block from "../../Components/Block"
 import { Contact } from "../Contact"
 import { ReactComponent as Arrow } from "../../assets/images/arrow-black.svg"
+
 /* eslint-disable */
 function reducer(state, action) {
   switch (action.type) {
@@ -49,11 +50,7 @@ const Menu = () => {
     <Block
       background="var(--selection-color)"
       style={{
-        position: "sticky",
-        zIndex: 10,
-        bottom: 0,
-        height: "130vh",
-        paddingTop: "30vh",
+        scrollSnapAlign: "start"
       }}
     >
       <MenuSelection display={state.selection} setDisplayState={scrollAndDispatch} />

@@ -6,21 +6,16 @@ import { ShiftingShape } from "../../../Components/shiftingShape"
 import { CTA } from "../../../Components/CTA"
 import Next from "../../../assets/badges/next.png"
 import ReactBadge from "../../../assets/badges/react.png"
-import { useObserver } from "../../../utils/useObserver"
+import { isOnScreen } from "../../../utils/useObserver"
 
 const shapeOptions = { imgSrc: AtecImg, skew: { x: 5, y: 5 } }
-const options = {
-  root: null,
-  rootMargin: "0px",
-  threshold: [0.2],
-}
 
 const Atec = () => {
   const thirdBlock = useRef(null)
-  const onScreen = useObserver(thirdBlock)
+  const onScreen = isOnScreen(thirdBlock)
 
   return (
-    <Block background="white">
+    <Block background="#F1F1F1" style={{ scrollSnapAlign: "start" }}>
       <div ref={thirdBlock} className="project__container">
         <div className="project__shape">
           <ShiftingShape isVisible={onScreen} shapeOptions={shapeOptions} />

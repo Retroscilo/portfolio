@@ -22,7 +22,7 @@ function createBackgroundObserver(newColor) {
   return new IntersectionObserver(callback, options)
 }
 
-function useObserver(ref) {
+function isOnScreen(ref) {
   const [isIntersecting, setIntersecting] = useState(false)
 
   const observer = useMemo(
@@ -42,4 +42,15 @@ function useObserver(ref) {
   return isIntersecting
 }
 
-export { createBackgroundObserver, useObserver }
+function useObserver(cb, options, ref) {
+  const observer = useMemo(
+    () => new IntersectionObserver(cb, options),
+    [cb, options]
+  )
+  useEffect(() => {
+    observer.observe(ref.current)
+    return () => observer.disconnect()
+  }, [observer, ref])
+}
+
+export { createBackgroundObserver, useObserver, isOnScreen }

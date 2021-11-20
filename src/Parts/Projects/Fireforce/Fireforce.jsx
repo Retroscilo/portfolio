@@ -5,21 +5,16 @@ import FireforceImg from "./fireforce.jpg"
 import { ShiftingShape } from "../../../Components/shiftingShape"
 import ReactBadge from "../../../assets/badges/react.png"
 import Python from "../../../assets/badges/python.png"
-import { useObserver } from "../../../utils/useObserver"
+import { isOnScreen } from "../../../utils/useObserver"
 
 const shapeOptions = { imgSrc: FireforceImg, skew: { x: 5, y: 5 } }
-const options = {
-  root: null,
-  rootMargin: "0px",
-  threshold: [0.2],
-}
 
 const Fireforce = () => {
   const thirdBlock = useRef(null)
-  const onScreen = useObserver(thirdBlock)
+  const onScreen = isOnScreen(thirdBlock)
 
   return (
-    <Block background="#EDEAA2">
+    <Block background="#D4D06B" style={{ scrollSnapAlign: "start" }}>
       <div ref={thirdBlock} className="project__container">
         <div className="project__shape">
           <ShiftingShape isVisible={onScreen} shapeOptions={shapeOptions} />

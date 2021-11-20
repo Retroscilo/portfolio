@@ -4,7 +4,7 @@ import { ShiftingShape } from "../../Components/shiftingShape"
 import "./Meet.css"
 import meet from "../../assets/images/meet.jpg"
 import { ReactComponent as Arrow } from "../../assets/images/arrow-black.svg"
-import { useObserver } from "../../utils/useObserver"
+import { isOnScreen } from "../../utils/useObserver"
 /* eslint-disable */
 
 const shapeOptions = {
@@ -19,11 +19,10 @@ const options = {
 
 const Meet = () => {
   const thirdBlock = useRef(null)
-  const onScreen = useObserver(thirdBlock)
-  useEffect(() => console.log("meet", onScreen))
+  const onScreen = isOnScreen(thirdBlock)
 
   return (
-    <Block background="#EDD3B6">
+    <Block background="#EDD3B6" style={{ scrollSnapAlign: "start" }}>
       <div className="meet" ref={thirdBlock}>
         <div className="meet__shape">
           <ShiftingShape isVisible={onScreen} shapeOptions={shapeOptions} />

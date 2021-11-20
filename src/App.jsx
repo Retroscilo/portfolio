@@ -12,12 +12,23 @@ function App() {
     <div className="App">
       <Provider>
         <Hero />
-        <Menu />
-        <Meet />
-        <Atec />
-        <Qarte />
-        <Fireforce />
-        <Spaceodyssey />
+        <div
+          style={{
+            scrollSnapType: "y mandatory",
+            height: "100vh",
+            overflow: "scroll",
+            position: "sticky",
+            zIndex: 10,
+            bottom: 0,
+          }}
+        >
+          <Menu />
+          <Meet />
+          <Atec />
+          <Qarte />
+          <Fireforce />
+          <Spaceodyssey />
+        </div>
       </Provider>
     </div>
   )
