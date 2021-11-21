@@ -45,7 +45,7 @@ const Meet = () => {
             })
           }}
           className={`meet__scrolldown --is-opaque`}
-          style={{ bottom: "150px" }}
+          style={{ bottom: "30px" }}
         >
           Réalisations <Arrow />
         </div>
