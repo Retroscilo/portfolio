@@ -1,4 +1,4 @@
-import { useReducer } from "react"
+import { useReducer, useRef } from "react"
 import "./Menu.css"
 import { MenuSelection } from "./MenuSelection"
 import Details from "../Details"
@@ -34,6 +34,7 @@ const initialState = Object.keys(Details).reduce(
 
 const Menu = () => {
   const [state, dispatch] = useReducer(reducer, initialState)
+
   function scroll() {
     window.scrollTo({
       top: 2 * window.innerHeight,

@@ -6,12 +6,15 @@ import "../Menu.css"
 import vitrine from "../../../assets/images/vitrine.jpg"
 import commerce from "../../../assets/images/commerce.jpg"
 import app from "../../../assets/images/app.jpg"
+import { isOnScreen } from "../../../utils/useObserver"
 
 const MenuSelection = ({ display, setDisplayState }) => {
   const menuSelectionRef = useRef(null)
   const Commerce = useRef(null)
   const Application = useRef(null)
   const Vitrine = useRef(null)
+
+  const onScreen = isOnScreen(menuSelectionRef)
 
   function selectDetails(key) {
     setDisplayState({ type: "hide", key: "selection" })
@@ -65,6 +68,7 @@ const MenuSelection = ({ display, setDisplayState }) => {
         <MenuItem
           background="var(--vitrine-color)"
           shapeOptions={{ imgSrc: vitrine, skew: { x: 5, y: 5 } }}
+          onScreen={onScreen}
         >
           SITE VITRINE
         </MenuItem>
@@ -74,6 +78,7 @@ const MenuSelection = ({ display, setDisplayState }) => {
           background="var(--commerce-color)"
           shapeOptions={{ imgSrc: commerce, skew: { x: -10, y: 15 } }}
           left
+          onScreen={onScreen}
         >
           E-COMMERCE
         </MenuItem>
@@ -82,6 +87,7 @@ const MenuSelection = ({ display, setDisplayState }) => {
         <MenuItem
           background="var(--application-color)"
           shapeOptions={{ imgSrc: app, skew: { x: 10, y: -15 } }}
+          onScreen={onScreen}
         >
           APPLICATION
         </MenuItem>
